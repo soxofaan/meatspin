@@ -18,7 +18,16 @@
         }
     };
 
+    // Add custom 'inaandout' easing function
+    $.extend(
+        $.easing,
+        {
+            inandout: function(p) { return 4 * p * (1 - p);}
+        }
+    );
 
+
+    // Define meatspin as a jquery plugin.
     $.fn.meatspin = function(options) {
 
         // Create some defaults, extending them with any options that were provided
@@ -28,8 +37,7 @@
             'counterTextContainer': null
         }, options);
 
-
-        // Cache some elements (and avoid 'this' confusion.
+        // Cache some elements (and avoid 'this' confusion).
         var meatImageElement = this;
         var counterElement = settings['counterTextContainer'];
 
@@ -46,6 +54,14 @@
                 var counterText = plural(count, 'No full spin yet.', '%d spin already.', "That's %d spins already!", '%d spins already.');
                 if (counterText !== counterElement.text()) {
                     counterElement.text(counterText);
+                    // Add animation.
+                    counterElement.animate({
+                        'top': '-20px',
+                        'font-size': '130%'
+                    }, {
+                        'duration': 200,
+                        'easing': 'inandout'
+                    });
                 }
             }
         };

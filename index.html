@@ -17,7 +17,9 @@
         <img src="img/bacon.jpg" />
     </div>
 
-    <div id="spincounter"></div>
+    <div id="spincounter">
+        <span id="spincountertext"></span>
+    </div>
 
 
     <script src="lib/jquery-1.9.1.min.js"></script>
@@ -27,7 +29,7 @@
     <script>
     $(document).ready(function() {
         $('#meatimage').meatspin({
-            counterTextContainer: $('#spincounter')
+            counterTextContainer: $('#spincountertext')
         });
     });
     </script>
