@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>Meatspin &#8635; Meat That Spins!</title>
+    <meta name="description" content="Meat that spins!">
+
+    <link rel="stylesheet" href="css/meatspin.css">
+</head>
+<body>
+
+    <h1>Meatspin &#8635; Meat That Spins!</h1>
+
+    <div id="meatimage">
+        <img src="img/bacon.jpg" />
+    </div>
+
+
+
+    <script src="lib/jquery-1.9.1.min.js"></script>
+
+    <script src="lib/jQueryRotateCompressed.2.2.js"></script>
+
+    <script>
+    $(document).ready(function(){
+        var meatImage = $('#meatimage');
+        // Rotations per minute
+        var rpm = 30;
+        // frames per seconds.
+        var targetFrameRate = 30;
+        // Do animation calculation ourself, to ensure smoothness.
+        var animationStartTime = (new Date().getTime()) / 1000;
+        var setRotation = function() {
+            var now = (new Date().getTime()) / 1000;
+            var rotationCounter = (now - animationStartTime) / 60 * rpm
+            meatImage.rotate(rotationCounter * 360);
+        }
+        var animate = function() {
+            setRotation();
+            setTimeout(animate, 1000 / targetFrameRate);
+        }
+
+        // Start animation.
+        animate();
+    });
+    </script>
+
+    <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
+         mathiasbynens.be/notes/async-analytics-snippet -->
+    <script>
+        var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
+</body>
+</html>
