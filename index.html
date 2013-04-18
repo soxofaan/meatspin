@@ -17,6 +17,8 @@
         <img src="img/bacon.jpg" />
     </div>
 
+    <div id="spincounter"></div>
+
 
 
     <script src="lib/jquery-1.9.1.min.js"></script>
@@ -25,17 +27,38 @@
 
     <script>
     $(document).ready(function(){
-        var meatImage = $('#meatimage');
+        // Cache some elements.
+        var meatImageElement = $('#meatimage');
+        var counterElement = $('#spincounter');
         // Rotations per minute
         var rpm = 30;
         // frames per seconds.
         var targetFrameRate = 30;
         // Do animation calculation ourself, to ensure smoothness.
         var animationStartTime = (new Date().getTime()) / 1000;
+        // Helper function to do plurals in counter text.
+        var plural = function(count, caseOne, caseTens, caseRest) {
+            if (count % 10 === 0) {
+                return caseTens.replace('%d', count);
+            }
+            else if (count === 1) {
+                return caseOne.replace('%d', count);
+            }
+            else {
+                return caseRest.replace('%d', count);
+            }
+        };
         var setRotation = function() {
+            // Update the image.
             var now = (new Date().getTime()) / 1000;
-            var rotationCounter = (now - animationStartTime) / 60 * rpm
-            meatImage.rotate(rotationCounter * 360);
+            var rotations = (now - animationStartTime) / 60 * rpm
+            meatImageElement.rotate(rotations * 360);
+            // Update the counter.
+            var count = Math.floor(rotations)
+            var counterText = plural(count, '%d spins already.', "That's %d spins already!", '%d spins already.');
+            if (counterText !== counterElement.text()) {
+                counterElement.text(counterText);
+            }
         }
         var animate = function() {
             setRotation();

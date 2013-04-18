@@ -18,3 +18,7 @@ h1 {
 	height: 400px;
 	margin: 83px auto;
 }
+
+#spincounter {
+	text-align: center;
+}
