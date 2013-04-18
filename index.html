@@ -20,63 +20,24 @@
     <div id="spincounter"></div>
 
 
-
     <script src="lib/jquery-1.9.1.min.js"></script>
-
     <script src="lib/jQueryRotateCompressed.2.2.js"></script>
+    <script src="js/meatspin.js"></script>
 
     <script>
-    $(document).ready(function(){
-        // Cache some elements.
-        var meatImageElement = $('#meatimage');
-        var counterElement = $('#spincounter');
-        // Rotations per minute
-        var rpm = 30;
-        // frames per seconds.
-        var targetFrameRate = 30;
-        // Do animation calculation ourself, to ensure smoothness.
-        var animationStartTime = (new Date().getTime()) / 1000;
-        // Helper function to do plurals in counter text.
-        var plural = function(count, caseOne, caseTens, caseRest) {
-            if (count % 10 === 0) {
-                return caseTens.replace('%d', count);
-            }
-            else if (count === 1) {
-                return caseOne.replace('%d', count);
-            }
-            else {
-                return caseRest.replace('%d', count);
-            }
-        };
-        var setRotation = function() {
-            // Update the image.
-            var now = (new Date().getTime()) / 1000;
-            var rotations = (now - animationStartTime) / 60 * rpm
-            meatImageElement.rotate(rotations * 360);
-            // Update the counter.
-            var count = Math.floor(rotations)
-            var counterText = plural(count, '%d spins already.', "That's %d spins already!", '%d spins already.');
-            if (counterText !== counterElement.text()) {
-                counterElement.text(counterText);
-            }
-        }
-        var animate = function() {
-            setRotation();
-            setTimeout(animate, 1000 / targetFrameRate);
-        }
-
-        // Start animation.
-        animate();
+    $(document).ready(function() {
+        $('#meatimage').meatspin({
+            counterTextContainer: $('#spincounter')
+        });
     });
     </script>
 
-    <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
-         mathiasbynens.be/notes/async-analytics-snippet -->
     <script>
         var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
         (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
         g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
         s.parentNode.insertBefore(g,s)}(document,'script'));
     </script>
+
 </body>
 </html>
