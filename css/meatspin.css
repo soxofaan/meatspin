@@ -24,6 +24,22 @@ h1 {
 .meatoption label {
 	padding: 0 0.5ex;
 }
+
+.vegetarian {
+	position: relative;
+}
+
+.vegetarian .disclaimer {
+	display: none;
+	position: absolute;
+	left: -3em;
+	width: 12em;
+	color: #666;
+	font-size: 75%;
+}
+
+.vegetarian:hover .disclaimer {
+	display: block;
 }
 
 #meatimagecontainer {
