@@ -14,8 +14,27 @@
 
     <h1>Meatspin &#8635; Meat That Spins!</h1>
 
-    <div id="meatimage">
-        <img src="img/bacon.jpg" />
+    <div id="meatoptions">
+        <span class="meatoption">
+            <input type="radio" name="meatoption" value="img/bacon.jpg" id="meatoption-bacon" checked>
+            <label for="meatoption-bacon">Bacon</label>
+        </span>
+        <span class="meatoption">
+            <input type="radio" name="meatoption" value="img/meatball.jpg" id="meatoption-meatball">
+            <label for="meatoption-meatball">Meat ball</label>
+        </span>
+        <span class="meatoption">
+            <input type="radio" name="meatoption" value="img/sausage.jpg" id="meatoption-sausage">
+            <label for="meatoption-sausage">Sausage</label>
+        </span>
+        <span class="meatoption">
+            <input type="radio" name="meatoption" value="img/steak.jpg" id="meatoption-steak">
+            <label for="meatoption-steak">Steak</label>
+        </span>
+    </div>
+
+    <div id="meatimagecontainer">
+        <img src="img/bacon.jpg" id="meatimage"/>
     </div>
 
     <div id="spincounter">
@@ -29,9 +48,16 @@
 
     <script>
     $(document).ready(function() {
-        $('#meatimage').meatspin({
+        // Set up meatspin animation.
+        $('#meatimagecontainer').meatspin({
             counterTextContainer: $('#spincountertext')
         });
+
+        // Set up meat selection radio's
+        $('#meatoptions input').change(function() {
+            $("#meatimage").attr('src', $(this).attr('value'));
+        });
+
     });
     </script>
 

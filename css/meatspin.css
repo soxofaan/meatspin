@@ -7,12 +7,26 @@ body {
 }
 
 h1 {
-	font-size: 32pt;
-	margin: 1em;
+	font-size: 28pt;
+	margin: 14pt;
 	text-align: center;
 }
 
-#meatimage {
+#meatoptions {
+	font-size: 14pt;
+	text-align: center;
+}
+
+.meatoption {
+	margin: 0 0.5em;
+}
+
+.meatoption label {
+	padding: 0 0.5ex;
+}
+}
+
+#meatimagecontainer {
 	width: 400px;
 	height: 400px;
 	margin: 83px auto;
@@ -20,7 +34,7 @@ h1 {
 
 #spincounter {
 	text-align: center;
-	font-size: 24pt;
+	font-size: 18pt;
 	position: relative;
 }
 

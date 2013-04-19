@@ -38,7 +38,7 @@
         }, options);
 
         // Cache some elements (and avoid 'this' confusion).
-        var meatImageElement = this;
+        var spinElement = this;
         var counterElement = settings['counterTextContainer'];
 
         // Do animation calculation ourself, to ensure smoothness.
@@ -47,19 +47,18 @@
             // Update the image.
             var now = (new Date().getTime()) / 1000;
             var rotations = (now - animationStartTime) / 60 * settings['spinsPerMinute'];
-            meatImageElement.rotate(rotations * 360);
+            spinElement.rotate(rotations * 360);
             // Update the counter.
             if (counterElement) {
                 var count = Math.floor(rotations);
-                var counterText = plural(count, 'No full spin yet.', '%d spin already.', "That's %d spins already!", '%d spins already.');
+                var counterText = plural(count, 'No full spin yet.', '%d spin, nice.', "That's %d spins already!", '%d spins already.');
                 if (counterText !== counterElement.text()) {
                     counterElement.text(counterText);
                     // Add animation.
                     counterElement.animate({
-                        'top': '-20px',
-                        'font-size': '130%'
+                        'top': '-40px'
                     }, {
-                        'duration': 200,
+                        'duration': 250,
                         'easing': 'inandout'
                     });
                 }
@@ -74,5 +73,6 @@
         animate();
 
     };
+
 
 })( jQuery );
