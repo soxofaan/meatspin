@@ -18,7 +18,7 @@
         }
     };
 
-    // Add custom 'inaandout' easing function
+    // Add custom 'inandout' easing function
     $.extend(
         $.easing,
         {
