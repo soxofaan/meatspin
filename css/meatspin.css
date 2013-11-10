@@ -55,7 +55,7 @@ h1 {
 #meatimagecontainer {
     width: 400px;
     height: 400px;
-    margin: 83px auto;
+    margin: 90px auto;
 }
 
 #spincounter {
@@ -67,4 +67,35 @@ h1 {
 #spincountertext {
     display: block;
     position: relative;
+    transition: transform .2s;
+    -webkit-transition: -webkit-transform .2s;
+}
+
+#spincountertext.changed {
+    transform: translate(0,-40px);
+    -webkit-transform: translate(0,-40px);
+}
+
+
+#meatimage {
+    animation: spinthemeat 1s linear infinite;
+    -webkit-animation: spinthemeat 1s linear infinite;
+}
+
+@keyframes spinthemeat {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spinthemeat {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
 }

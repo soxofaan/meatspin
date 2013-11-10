@@ -52,16 +52,14 @@
 
 
     <script src="lib/jquery-1.9.1.min.js"></script>
-    <script src="lib/jQueryRotateCompressed.2.2.js"></script>
     <script src="js/meatspin.js"></script>
 
     <script>
     $(document).ready(function() {
-        // Set up meatspin animation.
-        $('#meatimagecontainer').meatspin({
-            counterTextContainer: $('#spincountertext'),
-            spinsPerMinute: 60
-        });
+        // Set up meatspin counter handling and animation
+        // (should correspond to image CSS animation duration).
+        var animationDuration = parseInt($('#meatimage').css('animation-duration') || 1, 10);
+        $('#spincountertext').meatspinCounter(animationDuration);
 
         // Set up meat selection radio's
         $('#meatoptions input').change(function() {

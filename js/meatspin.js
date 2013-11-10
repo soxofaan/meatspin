@@ -28,49 +28,34 @@
 
 
     // Define meatspin as a jquery plugin.
-    $.fn.meatspin = function(options) {
+    $.fn.meatspinCounter = function(animationDuration) {
 
-        // Create some defaults, extending them with any options that were provided
-        var settings = $.extend( {
-            'spinsPerMinute': 25,
-            'targetFrameRate': 25,
-            'counterTextContainer': null
-        }, options);
+        if (!animationDuration) {
+            return;
+        }
 
-        // Cache some elements (and avoid 'this' confusion).
-        var spinElement = this;
-        var counterElement = settings['counterTextContainer'];
-
-        // Do animation calculation ourself, to ensure smoothness.
+        var counterElement = $(this);
         var animationStartTime = (new Date().getTime()) / 1000;
-        var setRotation = function() {
-            // Update the image.
+
+        function updateCounter() {
             var now = (new Date().getTime()) / 1000;
-            var rotations = (now - animationStartTime) / 60 * settings['spinsPerMinute'];
-            spinElement.rotate(rotations * 360);
-            // Update the counter.
-            if (counterElement) {
-                var count = Math.floor(rotations);
-                var counterText = plural(count, 'No full spin yet.', '%d spin, nice.', "That's %d spins already!", '%d spins already.');
-                if (counterText !== counterElement.text()) {
-                    counterElement.text(counterText);
-                    // Add animation.
-                    counterElement.animate({
-                        'top': '-40px'
-                    }, {
-                        'duration': 250,
-                        'easing': 'inandout'
-                    });
-                }
+            var count = Math.floor((now - animationStartTime) / animationDuration);
+            var counterText = plural(count, 'No full spin yet.', '%d spin, nice.', "That's %d spins already!", '%d spins already.');
+            if (counterText !== counterElement.text()) {
+                counterElement.text(counterText);
+                counterElement.addClass('changed');
             }
-        };
-        var animate = function() {
-            setRotation();
-            setTimeout(animate, 1000 / settings['targetFrameRate']);
-        };
+            else {
+                counterElement.removeClass('changed');
+            }
+        }
+        function keepUpdatingCounter() {
+            updateCounter();
+            setTimeout(keepUpdatingCounter, 100);
+        }
 
         // Start animation.
-        animate();
+        keepUpdatingCounter();
 
     };
 
