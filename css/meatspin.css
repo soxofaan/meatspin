@@ -2,69 +2,69 @@
 @import url(http://fonts.googleapis.com/css?family=Bubblegum+Sans);
 
 body {
-	font-family: 'Bubblegum Sans', sans-serif;
-	font-size: 11pt;
+    font-family: 'Bubblegum Sans', sans-serif;
+    font-size: 11pt;
 }
 
 h1 {
-	font-size: 28pt;
-	margin: 14pt;
-	text-align: center;
+    font-size: 28pt;
+    margin: 14pt;
+    text-align: center;
 }
 
 #meatoptions {
-	font-size: 14pt;
-	text-align: center;
+    font-size: 14pt;
+    text-align: center;
 }
 
 .meatoption {
-	margin: 0 0.5em;
+    margin: 0 0.5em;
 }
 
 .meatoption label {
-	padding: 0 0.5ex;
+    padding: 0 0.5ex;
 }
 
 .vegetarian {
-	position: relative;
+    position: relative;
 }
 
 .vegetarian .disclaimer {
-	display: block;
-	opacity: 0;
-	position: absolute;
-	left: -3em;
-	width: 12em;
-	color: #666;
-	font-size: 75%;
+    display: block;
+    opacity: 0;
+    position: absolute;
+    left: -3em;
+    width: 12em;
+    color: #666;
+    font-size: 75%;
 
-	/* For opacity animation on hover */
+    /* For opacity animation on hover */
     transition: opacity .3s ease-in-out;
-	-webkit-transition: opacity .3s ease-in-out;
+    -webkit-transition: opacity .3s ease-in-out;
     -moz-transition: opacity .3s ease-in-out;
     -o-transition: opacity .3s ease-in-out;
     -ms-transition: opacity .3s ease-in-out;
 }
 
 .vegetarian:hover .disclaimer {
-	opacity: 1;
+    opacity: 1;
 }
 
 
 
 #meatimagecontainer {
-	width: 400px;
-	height: 400px;
-	margin: 83px auto;
+    width: 400px;
+    height: 400px;
+    margin: 83px auto;
 }
 
 #spincounter {
-	text-align: center;
-	font-size: 18pt;
-	position: relative;
+    text-align: center;
+    font-size: 18pt;
+    position: relative;
 }
 
 #spincountertext {
-	display: block;
-	position: relative;
+    display: block;
+    position: relative;
 }
